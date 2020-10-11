@@ -1,0 +1,9 @@
+[nginx]
+192.168.2.71
+
+[nginx:vars]
+server_name=192.168.2.71
+user=root
+
+[mariadb]
+192.168.2.71

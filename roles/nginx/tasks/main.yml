@@ -1,0 +1,32 @@
+- name: 1 安装所需软件包
+  yum: name=readline-devel,gcc-c++.x86_64,gcc.x86_64,pcre-devel,zlib-devel state=latest
+
+- name: 2 创建/opt/package目录
+  file:
+    path: /opt/package
+    state: directory
+    mode: 0755
+
+- name: 3 传输所需软件包
+  unarchive: 
+    src: nginx-lua-0.1.tgz 
+    dest: /opt/package
+    mode: 0755
+
+- name: 4 执行安装脚本
+  shell: cd /opt/package && bash in-nginx.sh
+
+- name: 5 拷贝nginx.conf
+  copy:
+    src: nginx.conf
+    dest: /usr/local/nginx/conf
+    mode: 0755
+
+- name: 6 拷贝环境变量
+  copy:
+    src: lj2.sh
+    dest: /etc/profile.d
+    mode: 0755
+
+- name: 7 link
+  shell: ln -s /usr/local/nginx/sbin/nginx /usr/sbin/nginx

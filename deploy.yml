@@ -1,0 +1,5 @@
+- hosts: "mariadb"
+  gather_facts: true
+  remote_user: root
+  roles:
+    - mariadb

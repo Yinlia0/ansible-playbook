@@ -1,0 +1,14 @@
+- name: 0
+  unarchive:
+    src: mariadb.tgz
+    dest: /opt/package
+    mode: 0755
+
+- name: 1
+  copy:
+    src: mariadb-10.4.12-linux-systemd-x86_64.tar.gz
+    dest: /opt/package
+    mode: 0755
+
+- name: 2
+  shell: cd /opt/package && bash in-mariadb.sh
