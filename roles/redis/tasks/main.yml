@@ -1,0 +1,8 @@
+- name: 0
+  unarchive:
+    src: redis.tgz
+    dest: /opt/package
+    mode: 0755
+
+- name: 0
+  shell: cd /opt/package && bash redis.sh
